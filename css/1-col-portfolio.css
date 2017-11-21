@@ -1,0 +1,38 @@
+/*!
+ * Start Bootstrap - 1 Col Portfolio (https://startbootstrap.com/template-overviews/1-col-portfolio)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-1-col-portfolio/blob/master/LICENSE)
+ */
+
+body {
+  padding-top: 54px;
+}
+
+/* Custom Styles */
+img.portfolio{
+  height:400px;
+}
+.col-md-4.text-center p{
+  text-align: center;
+  font-size: 20px;
+}
+footer.fixed{
+  position:fixed;
+  width:100%;
+  bottom:0px;
+  padding: 15px 0px!important;
+}
+footer .container{
+  padding: 0px!important
+}
+/* End of Custom Styles */
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+.pagination {
+  margin-bottom: 15px;
+}
