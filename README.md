@@ -1,4 +1,9 @@
 # Disciplina: Teoria dos Grafos - UFSCar - 2017/2
+## Grupo 2 - Turma A
+- André Camargo Rocha RA:587052
+- Felipe Berreta RA: 422649
+- João Gabriel Fanhani Marins RA: 586919  
+
 ## Trabalhos Propostos e Especificações
 
 ## Referências
