@@ -73,59 +73,100 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe,
-            having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is
-            no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's
-            earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
-
-          <p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back
-            from science. The early warnings about technological dangers also come from science.</p>
-
-          <p>What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on
-            the earth.</p>
-
-          <p>A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather
-            than her violators. That's how I felt seeing the Earth for the first time. I could not help but love and cherish
-            her.</p>
-
-          <p>For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience
-            most certainly changes your perspective. The things that we share in our world are far more valuable than those
-            which divide us.</p>
-
-          <h2 class="section-heading">The Final Frontier</h2>
-
-          <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task
-            to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
-
-          <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task
-            to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
-
-          <blockquote class="blockquote">The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy.
-            We predict too much for the next year and yet far too little for the next ten.</blockquote>
-
-          <p>Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical
-            process which mankind is carrying out in accordance with the natural laws of human development.</p>
-
-          <h2 class="section-heading">Reaching for the Stars</h2>
-
-          <p>As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble,
-            the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that
-            if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.</p>
-
-          <a href="#">
-            <img class="img-fluid" src="img/post-sample-image.jpg" alt="">
-          </a>
-          <span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
-
-          <p>Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore
-            strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.</p>
-
-          <p>As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our
-            nature, Man must explore, and this is exploration at its greatest.</p>
-
-          <p>Placeholder text by
-            <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by
-            <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>.</p>
+          <p>O algoritmo de Prim é uma técnica bastante utilizada na resolução de problemas relacionados à busca de caminhos otimizados.
+            <br /> É um algoritmo
+            <a href="https://pt.wikipedia.org/wiki/Algoritmo_guloso">guloso</a> que recebe como entrada um grafo conectado, valorado e não direcionado e retorna uma
+            <a href="https://pt.wikipedia.org/wiki/%C3%81rvore_geradora_m%C3%ADnima">árvore geradora mínima (MST)</a>
+            <br /> A ideia geral é encontrar um subgrafo do grafo original, onde a soma de todas as arestas deste subgrafo é a menor possível
+            mantendo todos os vértices conectados. </p>
+          
+          <p>O problema que estamos tratando aqui, busca encontrar a MST de um
+            <a href="https://github.com/andrecgro/Grafos-UFSCAR-2017-2/blob/master/MST/ha30.zip">conjunto de dados</a> específicos através da implementação do algoritmo de Prim. Nossa implementação foi na linguagem Python,
+            simplesmente por ter sido a orientação do professor e por conter bibliotecas específicas para trabalhar com Grafos.
+            <br
+            /> Abaixo vamos então explicar apresentar nosso código e destrinchá-lo, explicando o que (e porquê) estão acontecendo certas
+            rotinas e/ou realizamos determinadas implementações:</p>
+          
+          <p>
+            <img src="https://puu.sh/yH456/b4be7e2260.png" alt="Figura 1 - Inicialização das bibliotecas e da função" />
+          </p>
+          
+          <p>Na imagem acima, estamos adicionando as bibliotecas sugeridas pelo professor em nosso código e inicializando a função principal
+            (linha 5)
+            <br /> A função prim, recebe um grafo G como parâmetro e logo no início cria uma flag de auxílio na lógica do código (first)
+            pois temos que realizar um tratamento mais a frente caso seja o primeiro nó verificado. Além disso, recebe uma lista de
+            nós da função
+            <a href="https://networkx.github.io/documentation/networkx-1.10/reference/generated/networkx.Graph.nodes.html">G.nodes()</a> (presente nas bibliotecas utilizadas)</p>
+          
+          <p>
+            <img src="https://puu.sh/yH4y1/e02bf7fa7e.png" alt="Figura 2 - Inicializando os atributos de todos os nós" />
+          </p>
+          
+          <p>A partir da linha 11, realizamos uma iteração passando por todos os nós do grafo e colocando inicializando seus atributos
+            da forma necessária para iniciar de fato o algoritmo de Prim. Os atributos que precisamos inicializar em cada nó são:
+            <em>parent</em>,
+            <em>visited</em> e
+            <em>min_path</em> que servem para controlar o pai de cada nó em cada iteração, checar se a visita nele já foi completada ou
+            não e atribuir o menor caminho para atingir este nó, respectivamente. Para o primeiro nó, nós colocamos
+            <em>min_path=0</em> e para o resto colocamos
+            <em>min_path=+&infin;</em>.</p>
+          
+          <p>
+            <img src="https://puu.sh/yH4Zq/a042bf8938.png" alt="Figura 3 - Parte principal do algoritmo de Prim" />
+          </p>
+          
+          <p>Na linha 22 estamos realizando o mesmo procedimento da Figura 1 (linha 9), porém passamos um atributo
+            <em>True</em> como parâmetro, indicando que queremos não só uma lista de nós mas também o atributo de cada nó (que foi inicializado
+            no laço
+            <em>for</em> da Figura 2)
+            <br /> A ideia básica é realizar o laço
+            <em>while</em> da linha 24 enquanto existir nós para serem visitados no grafo (que é exatamente a checagem feita pelo laço)
+            </p>
+          
+          <p>Para cada passo do algoritmo nós inicializamos uma lista dos nós a serem visitados e percorremos todo o grafo, adicionando
+            na lista os nós que possuem o atributo
+            <em>visited</em> como False, ou seja, sua visita ainda não foi concluída. Esse processo todo ocorre da linha 26 até a linha
+            30 na Figura 3. Em seguida, da linha 32 à linha 36 nós escolhemos o nó com o menor caminho até este momento da execução,
+            e que esteja na lista dos nós a serem visitados, para ser nosso nó pai. Ou seja, a partir deste nó escolhido começaremos
+            a expandir novamente e a realizar as novas visitas das próximas iterações.
+            <br /> Na linha 39 nós adicionamos todos os nós filhos do nó escolhido em uma lista chamada
+            <em>neighbors</em>. Em seguida, para cada nó presente nessa lista, caso ele não tenha sido visitado, nós recuperamos o valor
+            de seu caminho atual e comparamos com o seu caminho através deste novo nó escolhido como pai, caso o novo valor seja menor
+            então atualizamos seu atributo
+            <em>parent</em> e e
+            <em>min_path</em>
+          </p>
+          
+          <p>Em resumo, o algoritmo visita todos os filhos de um nó, checando se o valor do
+            <em>min_path</em> acessando este nó específico pelo pai atualmente setado é menor ou maior do que o valor
+            <em>min_path</em> previamente estabelecido (por isso inicializamos todos, exceto o primeiro, como +&infin;). Caso o valor,
+            acessando nesta iteração seja menor, então é atualizado o pai do nó e o valor do caminho até o mesmo.
+            <br /> Após isso, na linha 51, nós colocamos o pai do nó em questão como visitado (porque já checamos todos os seus filhos) e
+            partimos para a próxima iteração.</p>
+          
+          <p>
+            <img src="https://puu.sh/yH5Ut/d8a0b76eca.png" alt="Figura 4 - Gerando MST" />
+          </p>
+          
+          <p>Da linha 54 à linha 62 nós estamos construindo a MST de fato, basicamente basta checar um por um na lista
+            <em>all_nodes</em> se o pai de determinado elemento existe e se ele realmente foi visitado. Caso essas condições tenham sido
+            satisfeitas, nós adicionamos na
+            <em>mst</em> este nó e setamos seus atributos
+            <em>parent</em> e
+            <em>min_path</em>. O elemento que não tiver
+            <em>parent</em> setado será a raiz de nossa árvore.</p>
+          
+          <p>
+            <img src="https://puu.sh/yH6bK/606f8e16e9.png" alt="Figura 5 - Imprimindo a MST" />
+          </p>
+          
+          <p>A partir da linha 65 estamos construindo nossa função principal do programa, que servirá simplesmente para carregar o dataset
+            mencionado no começo do segundo parágrafo (linha 66 e 67), chamar a função
+            <em>prim</em> para este dataset e renderizar a MST gerada, usando uma função da biblioteca
+            <a href="https://networkx.github.io/documentation/stable/index.html">NetworkX</a>.
+            <br /> Nas linhas 73 e 74 apenas usamos um método do Python para chamar a função
+            <em>main</em> caso este arquivo seja executado (e dentro dela chamamos a função
+            <em>prim(G)</em> definida).</p>
         </div>
       </div>
     </div>
@@ -134,41 +175,13 @@
   <hr>
 
   <!-- Footer -->
-  <footer>
+  <footer class="py-3 bg-dark">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <ul class="list-inline text-center">
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-          </ul>
-          <p class="copyright text-muted">Copyright &copy; Your Website 2017</p>
-        </div>
-      </div>
+      <p class="m-0 text-center text-white">Teoria dos Grafos - UFSCar - 2017/2</p>
     </div>
+    <!-- /.container -->
   </footer>
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
