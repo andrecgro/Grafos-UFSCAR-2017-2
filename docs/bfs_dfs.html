@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Clean Blog - Start Bootstrap Theme</title>
+  <title>BFS e DFS</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -73,59 +73,91 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe,
-            having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is
-            no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's
-            earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
+          <p>Trataremos aqui a implementação dos algoritmos de busca em largura (BFS) e busca em profundidade (DFS) para a 
+            geração das árvores bfs-tree e dfs-tree.</p>
 
-          <p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back
-            from science. The early warnings about technological dangers also come from science.</p>
+          <p>Os algoritmos foram desenvolvidos em python, utilizando as bibliotecas networkx e matplotlib para auxílio do
+            tratamento dos grafos e para a representação gráfica. Os grafos utilizados foram karate e dolphins, importados 
+            no código através do comando F = nx.read_pajek('"caminho"/arquivo.paj'), em que "caminho" é o caminho até o
+            diretório onde estão salvos os arquivos karate.paj e dolphins.paj e "arquivo" é karate ou dolphins. 
+            O grafo do arquivo karate possui 34 vértices e o grafo dolphins possui 62 vértices</p>
 
-          <p>What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on
-            the earth.</p>
+          <p>Os arquivos dos grafos podem ser obtidos em: <a href="http://networkdata.ics.uci.edu/data/karate/karate.paj">karate.paj</a> 
+            e <a href="http://networkdata.ics.uci.edu/data/dolphins/dolphins.paj">dolphins.paj</a></p>
 
-          <p>A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather
-            than her violators. That's how I felt seeing the Earth for the first time. I could not help but love and cherish
-            her.</p>
+          <p>Começaremos com a implementação do algoritmo de busca em largura (BFS), aplicaremos esse algoritmo para os dois grafos
+            e, após isso, faremos o mesmo para o algoritmo de busca em profundidade (DFS).</p>
 
-          <p>For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience
-            most certainly changes your perspective. The things that we share in our world are far more valuable than those
-            which divide us.</p>
+          <p>O esquema de coloração dos vértices foi o mesmo para os dois algoritmos: todos os vértices iniciam com a cor 
+            branca, mostrando que são vértices não visitados. Quando eles são visitados, recebem a cor cinza e a partir 
+            do momento que já estiverem sido visitados e não possuírem mais filhos para seguir com o algoritmo, são 
+            removidos da fila (no caso do BFS) ou da pilha (no caso do DFS) e recebem a cor preta.</p>
 
-          <h2 class="section-heading">The Final Frontier</h2>
+          <h2 class="section-heading">Busca em Largura (BFS)</h2>
 
-          <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task
-            to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
+          <p>O algoritmo de busca em largura inicia sua busca em um vértice inicial s. Após isso, todos os vértices vizinhos
+            de s são visitados. Depois todos os vértices que estão a duas arestas de distância do vértice s, e assim por 
+            diante, até que todos os vértices tenham sido visitados.</p>
 
-          <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task
-            to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
+          <p>Para o controle dos vértices a serem visitados, o algoritmo BFS utiliza uma estrutura de fila (First In Last Out). A 
+            cada vértice visitado, seus filhos são adicionados na fila e visitados em sequência, repetindo o processo até que não 
+            haja mais vértice não visitado.</p>
 
-          <blockquote class="blockquote">The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy.
-            We predict too much for the next year and yet far too little for the next ten.</blockquote>
+          <p>A função BFS() deve receber como parâmetro o grafo (G) a ser tratado e o vértice inicial (s)</p>
 
-          <p>Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical
-            process which mankind is carrying out in accordance with the natural laws of human development.</p>
+          <p>O código implementado em python foi o da imagem abaixo. Ele contém comentários explicando cada parte da implementação
+            do algoritmo.</p>
 
-          <h2 class="section-heading">Reaching for the Stars</h2>
+          <img src="img/bfs.jpeg">
 
-          <p>As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble,
-            the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that
-            if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.</p>
+          <p>O grafo descrito pelo arquivo karate.paj é o grafo da imagem a seguir.</p>
+
+          <img src="img/karate.png">
+
+          <p>Esse grafo é importado na linha 5 do cógido e passa, então, pelo procedimento de busca em largura. Com esse 
+            procedimento, é possível obtermos o grafo bfs-tree, que é criado a partir da análise dos predecessores de 
+            cada vértice do grafo. A bfs-tree do grafo karate é mostrado na imagem abaixo.</p>
+
+          <img src="img/karate-bfs.png">
+
+          <p>Em seguida, o mesmo procedimento foi feito para o grafo descrito pelo arquivo dolphins.paj. O grafo que será
+            trabalhado agora, é o grafo da imagem a seguir.</p>
+
+          <img src="img/dolphins.png">
+          
+          <p>Por fim, o grafo dolphins foi processado gerando a bfs-tree da imagem abaixo.</p>
+
+          <img src="img/dolphins-bfs.png">
+
+
+          <h2 class="section-heading">Busca em Profundidade (DFS)</h2>
+
+          <p>Agora, realizaremos os mesmos procedimentos porém utilizando o algoritmo de busca em profundidade.</p>
+
+          <p>O algoritmo DFS visita todos os níveis de cada filho do vértice inicial antes de partir para o próximo filho. Ao
+            contrário da busca em largura que analisa todos os filhos de um nível antes de partir para o próximo nível.</p>
+            
+          <p>Para o controle da ordem de visitação dos vértices, o DFS utiliza uma estrutura de pilha (First In First Out), adicionando
+            à pilha todos os filhos de cada vértice, visitando-os em sequência e removendo-os da pilha após terem sido visitados 
+            e não possuírem mais filhos.</p>
+
+          <p>A imagem abaixo mostra o código desenvolvido em python para a busca em profundidade. O código possui comentários
+            que facilitam sua compreensão.</p> 
+
+          <img src="img/dfs.png">          
+
+          <p>Inicialmente, o grafo karate foi importado e a dfs-tree gerada pelo algoritmo é mostrada na imagem abaixo.</p>
+
+          <img src="img/karate-dfs.png">
+
+          <p>Em seguida, foi feito o mesmo procedimento para o grafo dolphins e a dfs-tree resultante é mostrada na imagem
+            a seguir.</p>
+
+          <img src="img/dolphins-dfs.png">
 
           <a href="#">
             <img class="img-fluid" src="img/post-sample-image.jpg" alt="">
           </a>
-          <span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
-
-          <p>Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore
-            strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.</p>
-
-          <p>As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our
-            nature, Man must explore, and this is exploration at its greatest.</p>
-
-          <p>Placeholder text by
-            <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by
-            <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>.</p>
         </div>
       </div>
     </div>
