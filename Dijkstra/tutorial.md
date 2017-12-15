@@ -13,7 +13,7 @@ A segunda, e última, grande diferença entre os dois algoritmos é que a checag
 Fora isso, podemos tirar como base que são algoritmos extremamente parecidos. Nos casos de testes propostos para o trabalho, executamos este algoritmo com 2 e 3 raízes iniciais, as fotos respectivas podem ser encontradas abaixo.
 
 Para finalizar, gostaríamos de mostrar que a execução do algoritmo elaborado no dataset proposto para *K=2* resultou nos seguintes conjuntos de vértices:
-![Figura 3 - Dijkstra com 2 raízes iniciais](https://github.com/andrecgro/Grafos-UFSCAR-2017-2/blob/master/Dijkstra/Dijkstra_2.png)
+![Figura 3 - Dijkstra com 2 raízes iniciais](https://puu.sh/yHfJs/4d882fe8dd.png)
 
 Já para *K=3* temos os seguintes conjuntos:
-![Figura 4 - Dijkstra com 3 raízes iniciais](https://github.com/andrecgro/Grafos-UFSCAR-2017-2/blob/master/Dijkstra/Dijkstra_3.png)
+![Figura 4 - Dijkstra com 3 raízes iniciais](https://puu.sh/yHfLc/4b5ea0771e.png)
