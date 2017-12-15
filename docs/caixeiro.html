@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Clean Blog - Start Bootstrap Theme</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+    rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.css" rel="stylesheet">
+  <link href="css/1-col-portfolio.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Teoria dos Grafos - UFSCar - 2017/2</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Projetos
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="team.html">Grupo</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('assets/caixeiro.png')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>O Caixeiro Viajante</h1>
+            <h2 class="subheading">Uma abordagem didática de sua solução</h2>
+            <span class="meta">Posted by
+              <a href="#">Felipe Berreta</a>
+              on December 15, 2017</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          
+          
+          <h2 class="section-heading">O Caixeiro Viajante</h2>
+
+          <p>Dentro da computação o problema do caixeiro viajante é um clássico, onde possui diversas abordagens e inúmeras soluções de diversos tipos.</p>
+
+          <p>Fazendo um paralelo entre a teoria de grafos e o problema do caixeiro viajante podemos ver uma relação direta com o conceito de grafos hamiltonianos. Um grafo hamiltoniano é um grafo que possui um ciclo (ciclo hamiltoniano) que engloba todos os vértices do grafo sem que haja repetições.</p>
+
+          <p>O problema do caixeiro viajante, no contexto de grafos hamiltonianos, consiste em, dado um grafo ponderado G, deseja-se buscar o ciclo hamiltoniano de menor peso partindo de um ponto inicial, de forma a minimizar o máximo possível a distância percorrida.</p>
+
+          <p>A abordagem escolhida para a resolução do problema do caixeiro viajante neste post  foi o twice around. Basicamente, a ideia é encontrar a MST de um grafo ponderado, duplicar suas arestas para que ele se torne euleriano e por fim eliminar as repetições, obtendo assim a resolução final do problema.</p>
+
+          <p>Na parte da implementação foram seguidas as recomendações do professor. A implementação foi realizada em python utilizando a biblioteca networkx. No desenvolvimento foram utilizadas funções próprias da biblioteca utilizada, facilitando assim o desenvolvimento.</p>
+
+          <p>Para a resolução do problema foram implementados os algoritmos de Prim e do Twice-Around, podendo ser visualizado seus códigos no ao final da página.</p>
+
+
+          <p>O dataset usado para o trabalho foi fornecido junto ao problema do caixeiro viajante no ambiente de aprendizagem Ava. O arquivo  .gml esta organizado na forma índice_id <-> nome_da_cidade.</p>
+
+          <p>O plote do grafo original pode ser visto na Figura 1.</p>
+
+       
+
+         <div class="col-md-6">
+           <a href="bfs_dfs.html">
+             <img class="portfolio img-fluid rounded mb-3 mb-md-0"  src="assets/grafo_TSP.png" alt="">
+           </a>
+           <span class="caption text-muted">Figura 1: Plote do  Gráfico.</span>
+         </div>
+        
+
+        <p>Com a existência de muitos caminhos eulerianos para seguir, as soluções encontradas sempre serão aproximadas, e podem apresentar uma grande discrepância entre si. Como solicitado, segue os 3 melhores e os 3 piores resultados dos testes realizados:</p>
+
+        <p>Peso = 776</p>
+        <p>Ordem: 27, 13, 29, 8, 28, 14, 3, 1, 5, 10, 23, 21, 2, 17, 12, 0, 16, 19, 7, 26, 24, 9, 11, 18, 15, 20, 25, 4, 22, 6, 27</p>
+
+        <p>Peso = 593</p>
+        <p>Ordem: 10, 23, 21, 2, 17, 12, 0, 16, 19, 7, 26, 24, 9, 11, 18, 15, 20, 25, 4, 22, 6, 5, 1, 3, 27, 13, 29, 8, 28, 14, 10
+        </p>
+
+        <p>Peso = 617</p>
+        <p>Ordem: 17, 2, 21, 23, 10, 5, 1, 3, 27, 13, 29, 8, 28, 14, 12, 0, 16, 19, 7, 26, 24, 9, 11, 18, 15, 20, 25, 4, 22, 6, 17</p>
+
+        <p>Peso = 672</p>
+        <p>Ordem: 25, 20, 15, 18, 7, 26, 24, 9, 11, 19, 16, 0, 12, 21, 23, 10, 5, 1, 3, 27, 13, 29, 8, 28, 14, 2, 17, 4, 22, 6, 25</p>
+
+        <p>Peso = 677</p>
+        <p>Ordem: 24, 26, 7, 19, 16, 0, 12, 21, 23, 10, 5, 1, 3, 27, 13, 29, 8, 28, 14, 2, 17, 18, 15, 20, 25, 4, 22, 6, 11, 9, 24</p>
+
+        <p>Peso = 679</p>
+        <p>Ordem: 11, 26, 7, 19, 16, 0, 12, 21, 23, 10, 5, 1, 3, 27, 13, 29, 8, 28, 14, 2, 17, 18, 15, 20, 25, 4, 22, 6, 24, 9, 11</p>
+
+        <hr>
+
+        <span class="caption text-muted">Acesso a implementação e ao dataset:</span>
+
+         <a class="nav-link" href="TSP.py">Caixeiro Viajante
+              <span class="sr-only">(current)</span>
+        </a>
+         <a class="nav-link" href="HA.PY">Dataset
+              <span class="sr-only">(current)</span>
+        </a>
+
+
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer class="py-3 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Teoria dos Grafos - UFSCar - 2017/2</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
