@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Clean Blog - Start Bootstrap Theme</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+    rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.css" rel="stylesheet">
+  <link href="css/1-col-portfolio.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Teoria dos Grafos - UFSCar - 2017/2</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Projetos
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="team.html">Grupo</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('assets/ha30.png')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Árvores Geradoras Mínimas</h1>
+            <h2 class="subheading">Uma abordagem didática de sua solução</h2>
+            <span class="meta">Posted by
+              <a href="#">André Rocha</a>
+              on December 15, 2017</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>O algoritmo de Prim é uma técnica bastante utilizada na resolução de problemas relacionados à busca de caminhos otimizados.
+            <br /> É um algoritmo
+            <a href="https://pt.wikipedia.org/wiki/Algoritmo_guloso">guloso</a> que recebe como entrada um grafo conectado, valorado e não direcionado e retorna uma
+            <a href="https://pt.wikipedia.org/wiki/%C3%81rvore_geradora_m%C3%ADnima">árvore geradora mínima (MST)</a>
+            <br /> A ideia geral é encontrar um subgrafo do grafo original, onde a soma de todas as arestas deste subgrafo é a menor possível
+            mantendo todos os vértices conectados. </p>
+          
+          <p>O problema que estamos tratando aqui, busca encontrar a MST de um
+            <a href="https://github.com/andrecgro/Grafos-UFSCAR-2017-2/blob/master/MST/ha30.zip">conjunto de dados</a> específicos através da implementação do algoritmo de Prim. Nossa implementação foi na linguagem Python,
+            simplesmente por ter sido a orientação do professor e por conter bibliotecas específicas para trabalhar com Grafos.
+            <br
+            /> Abaixo vamos então explicar apresentar nosso código e destrinchá-lo, explicando o que (e porquê) estão acontecendo certas
+            rotinas e/ou realizamos determinadas implementações:</p>
+          
+          <p>
+            <img src="https://puu.sh/yH456/b4be7e2260.png" alt="Figura 1 - Inicialização das bibliotecas e da função" />
+          </p>
+          
+          <p>Na imagem acima, estamos adicionando as bibliotecas sugeridas pelo professor em nosso código e inicializando a função principal
+            (linha 5)
+            <br /> A função prim, recebe um grafo G como parâmetro e logo no início cria uma flag de auxílio na lógica do código (first)
+            pois temos que realizar um tratamento mais a frente caso seja o primeiro nó verificado. Além disso, recebe uma lista de
+            nós da função
+            <a href="https://networkx.github.io/documentation/networkx-1.10/reference/generated/networkx.Graph.nodes.html">G.nodes()</a> (presente nas bibliotecas utilizadas)</p>
+          
+          <p>
+            <img src="https://puu.sh/yH4y1/e02bf7fa7e.png" alt="Figura 2 - Inicializando os atributos de todos os nós" />
+          </p>
+          
+          <p>A partir da linha 11, realizamos uma iteração passando por todos os nós do grafo e colocando inicializando seus atributos
+            da forma necessária para iniciar de fato o algoritmo de Prim. Os atributos que precisamos inicializar em cada nó são:
+            <em>parent</em>,
+            <em>visited</em> e
+            <em>min_path</em> que servem para controlar o pai de cada nó em cada iteração, checar se a visita nele já foi completada ou
+            não e atribuir o menor caminho para atingir este nó, respectivamente. Para o primeiro nó, nós colocamos
+            <em>min_path=0</em> e para o resto colocamos
+            <em>min_path=+&infin;</em>.</p>
+          
+          <p>
+            <img src="https://puu.sh/yH4Zq/a042bf8938.png" alt="Figura 3 - Parte principal do algoritmo de Prim" />
+          </p>
+          
+          <p>Na linha 22 estamos realizando o mesmo procedimento da Figura 1 (linha 9), porém passamos um atributo
+            <em>True</em> como parâmetro, indicando que queremos não só uma lista de nós mas também o atributo de cada nó (que foi inicializado
+            no laço
+            <em>for</em> da Figura 2)
+            <br /> A ideia básica é realizar o laço
+            <em>while</em> da linha 24 enquanto existir nós para serem visitados no grafo (que é exatamente a checagem feita pelo laço)
+            </p>
+          
+          <p>Para cada passo do algoritmo nós inicializamos uma lista dos nós a serem visitados e percorremos todo o grafo, adicionando
+            na lista os nós que possuem o atributo
+            <em>visited</em> como False, ou seja, sua visita ainda não foi concluída. Esse processo todo ocorre da linha 26 até a linha
+            30 na Figura 3. Em seguida, da linha 32 à linha 36 nós escolhemos o nó com o menor caminho até este momento da execução,
+            e que esteja na lista dos nós a serem visitados, para ser nosso nó pai. Ou seja, a partir deste nó escolhido começaremos
+            a expandir novamente e a realizar as novas visitas das próximas iterações.
+            <br /> Na linha 39 nós adicionamos todos os nós filhos do nó escolhido em uma lista chamada
+            <em>neighbors</em>. Em seguida, para cada nó presente nessa lista, caso ele não tenha sido visitado, nós recuperamos o valor
+            de seu caminho atual e comparamos com o seu caminho através deste novo nó escolhido como pai, caso o novo valor seja menor
+            então atualizamos seu atributo
+            <em>parent</em> e e
+            <em>min_path</em>
+          </p>
+          
+          <p>Em resumo, o algoritmo visita todos os filhos de um nó, checando se o valor do
+            <em>min_path</em> acessando este nó específico pelo pai atualmente setado é menor ou maior do que o valor
+            <em>min_path</em> previamente estabelecido (por isso inicializamos todos, exceto o primeiro, como +&infin;). Caso o valor,
+            acessando nesta iteração seja menor, então é atualizado o pai do nó e o valor do caminho até o mesmo.
+            <br /> Após isso, na linha 51, nós colocamos o pai do nó em questão como visitado (porque já checamos todos os seus filhos) e
+            partimos para a próxima iteração.</p>
+          
+          <p>
+            <img src="https://puu.sh/yH5Ut/d8a0b76eca.png" alt="Figura 4 - Gerando MST" />
+          </p>
+          
+          <p>Da linha 54 à linha 62 nós estamos construindo a MST de fato, basicamente basta checar um por um na lista
+            <em>all_nodes</em> se o pai de determinado elemento existe e se ele realmente foi visitado. Caso essas condições tenham sido
+            satisfeitas, nós adicionamos na
+            <em>mst</em> este nó e setamos seus atributos
+            <em>parent</em> e
+            <em>min_path</em>. O elemento que não tiver
+            <em>parent</em> setado será a raiz de nossa árvore.</p>
+          
+          <p>
+            <img src="https://puu.sh/yH6bK/606f8e16e9.png" alt="Figura 5 - Imprimindo a MST" />
+          </p>
+          
+          <p>A partir da linha 65 estamos construindo nossa função principal do programa, que servirá simplesmente para carregar o dataset
+            mencionado no começo do segundo parágrafo (linha 66 e 67), chamar a função
+            <em>prim</em> para este dataset e renderizar a MST gerada, usando uma função da biblioteca
+            <a href="https://networkx.github.io/documentation/stable/index.html">NetworkX</a>.
+            <br /> Nas linhas 73 e 74 apenas usamos um método do Python para chamar a função
+            <em>main</em> caso este arquivo seja executado (e dentro dela chamamos a função
+            <em>prim(G)</em> definida).</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer class="py-3 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Teoria dos Grafos - UFSCar - 2017/2</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
