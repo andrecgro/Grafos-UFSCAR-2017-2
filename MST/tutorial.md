@@ -35,3 +35,7 @@ Da linha 54 à linha 62 nós estamos construindo a MST de fato, basicamente bast
 
 A partir da linha 65 estamos construindo nossa função principal do programa, que servirá simplesmente para carregar o dataset mencionado no começo do segundo parágrafo (linha 66 e 67), chamar a função *prim* para este dataset e renderizar a MST gerada, usando uma função da biblioteca [NetworkX](https://networkx.github.io/documentation/stable/index.html).  
 Nas linhas 73 e 74 apenas usamos um método do Python para chamar a função *main* caso este arquivo seja executado (e dentro dela chamamos a função *prim(G)*  definida).
+
+Para finalizar, gostaríamos de mostrar que a execução do algoritmo elaborado no dataset proposto, resultou a seguinte MST:
+
+![Figura 3 - Execução do algoritmo elaborado](MST_0.png)
