@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Clean Blog - Start Bootstrap Theme</title>
+  <title>Snakes and Ladders</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -73,59 +73,123 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe,
-            having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is
-            no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's
-            earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
+          <p>Snakes and Ladders é um jogo de tabuleiro que segue a figura abaixo.</p>
 
-          <p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back
-            from science. The early warnings about technological dangers also come from science.</p>
+          <img src="img/snakes.png" alt="">
 
-          <p>What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on
-            the earth.</p>
+          <p>O jogo funciona da seguinte forma: a cada rodada o jogador lança um dado não viciado e avança
+             uma casa se a moeda mostrar cara e duas casas caso o resultado seja coroa. A partir disso, caso 
+             o jogador pare no pé de uma escada, ele automaticamente vai até o topo da escada e, caso pare na 
+             boca de uma cobra, ele escorrega até o rabo.</p>
 
-          <p>A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather
-            than her violators. That's how I felt seeing the Earth for the first time. I could not help but love and cherish
-            her.</p>
+          <p>O jogador inicia o jogo no quadrado de número 1 e o jogo termina quando atinge o quadrado de número 36.</p>
 
-          <p>For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience
-            most certainly changes your perspective. The things that we share in our world are far more valuable than those
-            which divide us.</p>
+          <h2 class="section-heading">Cadeia de Markov</h2>
 
-          <h2 class="section-heading">The Final Frontier</h2>
+          <p>Um Processo Markoviano segue o princípio de que a probabilidade condicional de qualquer evento futuro, 
+            dado qualquer evento passado e o estado presente, é independente do evento passado e depende somente do 
+            estado presente. Ou seja, a cadeia de Markov é um processo que seu estado futuro depende apenas do seu
+             estado atual, sendo que os estados passados não têm influência sobre o estado futuro.</p>
 
-          <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task
-            to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
+             <h2 class="section-heading">Diagrama de estados da Cadeia de Markov</h2>
 
-          <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task
-            to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
+          <p>Para criarmos a Cadeia de Markov, é necessário estabelecer o diagrama de estados do problema. 
+            Para isso, todas as casas do tabuleiro serão representadas no diagrama como sendo os vértices 
+            e os caminhos de cada casa (vértice) serão representados pelas arestas.</p>
 
-          <blockquote class="blockquote">The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy.
-            We predict too much for the next year and yet far too little for the next ten.</blockquote>
+          <p>Existem três situações possíveis para o problema Snakes and Ladders: </p>
 
-          <p>Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical
-            process which mankind is carrying out in accordance with the natural laws of human development.</p>
+          <ol>
+            <li>Casa padrão: casa que não possui a base da escada nem a boca da cobra;</li>
+            <li>Casa Ladder: casa que possui a base da escada;</li>
+            <li>Casa Snake: casa que possui a boca da cobra;</li>
+          </ol>
 
-          <h2 class="section-heading">Reaching for the Stars</h2>
+          <p>Para representar essas casas, serão utilizadas três cores diferentes, da seguinte forma:</p>
 
-          <p>As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble,
-            the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that
-            if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.</p>
+          <ol>
+            <li>Casa padrão: cor branca</li>
+            <li>Casa Ladder: cor azul</li>
+            <li>Casa Snake: cor laranja</li>
+          </ol>
 
-          <a href="#">
-            <img class="img-fluid" src="img/post-sample-image.jpg" alt="">
-          </a>
-          <span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
+          <p>O diagrama de estados para o problema é exibido na figura a seguir.</p>
 
-          <p>Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore
-            strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.</p>
+          <img src="img/diagrama.png">
 
-          <p>As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our
-            nature, Man must explore, and this is exploration at its greatest.</p>
+            
 
-          <p>Placeholder text by
-            <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by
-            <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>.</p>
+          <h2 class="section-heading"> Matriz de Transição de Estados </h2>
+
+          <p>A matriz de Transição de Estados mostra as probabilidades de transição de estados, ou seja, 
+            no caso do jogo, é uma matriz de tamanho 36x36 que relaciona todas as casas do tabuleiro mostrando 
+            a probabilidade de o jogador sair de uma casa e chegar à outra. A figura abaixo exibe a matriz de Transição 
+            de Estados.</p>
+
+          <img src="img/matriz.png" alt="">
+
+          <p>Observamos na matriz que a partir de cada casa, o jogador possui no máximo duas opções para 
+              mudança de casas. Por exemplo, no início do jogo, quando na casa 1, o jogador tem duas opções 
+              para mudança: caso a moeda mostre “cara” ele avançará para a casa 2, caso seja “coroa”, avançará 
+              para a casa 3, logo ele tem 50% de chance de ir para a casa 2 e 50% de ir para a casa 3. A outra 
+              opção de mudança são nas casas do tipo “Casa Ladder” ou “Casa Snake”. Nessas casas, o jogador tem 
+              100% de chance de ir para uma casa específica. Por exemplo, caso o jogador esteja na casa 2, ele 
+              só poderá se mover para a casa 15, logo, a chance de o jogador ir para a casa 15 é de 100%, e para 
+              as demais casas, 0%.</p>
+
+          <h2 class="section-heading"> Distribuição Estacionária da Cadeia de Markov </h2>
+
+          <p>Para sabermos as probabilidades de o jogador passar por cada casa do tabuleiro durante o jogo, 
+            faremos a Distribuição Estacionária da Cadeia de Markov em questão. Com isso, será possível obter 
+            a probabilidade de o jogador vencer o jogo.</p>
+        
+          <p>Para isso, será utilizado o Power Method, que consiste em multiplicar o vetor de probabilidade de 
+            cada vértice pela Matriz de Transição de Estados exibida na figura 3, o número k de vezes que se deseja. 
+            Um script em Python foi desenvolvido para calcular a distribuição estacionária da cadeia de Markov. 
+            Nesse script foi declarada a Matriz de Transição de Estados T, a posição inicial W e então o procedimento 
+            de multiplicação, utilizando k = 100. O código completo em python é exibido na figura abaixo.</p>
+
+          <img src="img/distEstacionaria.png" alt="">
+
+          <p>Executando o Script acima obtivemos a probabilidade de cada casa. O resultado é exibido na figura a seguir.</p>
+
+          <img src="img/prob.png" alt="">
+
+          <p>Pode-se observar que alguns vértices ficaram com 0% de probabilidade, e isso ocorre por causa de 
+            dois motivos: por serem visitados pouquíssimas vezes durante a caminhada aleatória do método Power Method, 
+            ou porque não é possível acessá-los.</p>
+
+          <p>Analisando os resultados da aplicação do Power Method com k = 100, vemos que a probabilidade de se atingir a
+             casa 36 é de 0.19114%, logo, a probabilidade de um jogador vencer o jogo é de 0. 19114%.</p>
+
+          <p>Para verificarmos quais os estados mais prováveis de serem acessados, basta analisarmos as maiores probabilidades.
+             Os três estados mais prováveis são os da figura abaixo.</p>
+
+          <img src="img/estadosProvaveis.png" alt="">
+
+          <h2 class="section-heading">Page Rank</h2>
+
+          <p>Para especificarmos a matriz P_barra referente ao modelo Pagerank, foi utilizada a fórmula exibida na equação 
+            abaixo.</p>
+
+          <img src="img/equacao.png" alt="">
+
+          <p>Tal que <img src="img/alfa.png"> e n = 36. Obteve-se, então, a matriz P_barra da figura exibida abaixo.</p>
+
+          <img src="img/matrizPbarra.png" alt="">
+
+          <p>Para gerar a matriz P_barra foi utilizado o script em Python exibido na figura a seguir.</p>
+
+          <img src="img/geracaoPbarra.png" alt="">
+
+          <p>Após isso, o script do Power Method exibido na figura 4 foi aplicado nessa matriz, e o resultado obtido é mostrado na 
+            figura a seguir.</p>
+
+          <img src="img/prob2.png" alt="">
+
+          <p>Comparando os resultados da figura 9 com os resultados da figura 5, percebemos a grande diferença obtida nos 
+            resultados da distribuição estacionária. As porcentagens obtidas na distribuição estacionária realizada na 
+            matriz T é consideravelmente menor do que as obtidas na aplicação do Power Method na matriz P_barra.</p>
         </div>
       </div>
     </div>
