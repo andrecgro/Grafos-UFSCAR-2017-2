@@ -25,6 +25,10 @@ footer.fixed{
 footer .container{
   padding: 0px!important
 }
+
+a.navbar-brand{
+  cursor:default ;
+}
 /* End of Custom Styles */
 
 @media (min-width: 992px) {
